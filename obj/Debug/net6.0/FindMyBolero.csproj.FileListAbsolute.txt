@@ -1,0 +1,15 @@
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\bin\Debug\net6.0\FindMyBolero.exe
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\bin\Debug\net6.0\FindMyBolero.deps.json
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\bin\Debug\net6.0\FindMyBolero.runtimeconfig.json
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\bin\Debug\net6.0\FindMyBolero.dll
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\bin\Debug\net6.0\FindMyBolero.pdb
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\obj\Debug\net6.0\FindMyBolero.csproj.AssemblyReference.cache
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\obj\Debug\net6.0\FindMyBolero.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\obj\Debug\net6.0\FindMyBolero.AssemblyInfoInputs.cache
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\obj\Debug\net6.0\FindMyBolero.AssemblyInfo.cs
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\obj\Debug\net6.0\FindMyBolero.csproj.CoreCompileInputs.cache
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\obj\Debug\net6.0\FindMyBolero.dll
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\obj\Debug\net6.0\refint\FindMyBolero.dll
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\obj\Debug\net6.0\FindMyBolero.pdb
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\obj\Debug\net6.0\FindMyBolero.genruntimeconfig.cache
+C:\Users\halla\Documents\Programozas\findMyBolero\FindMyBolerp\FindMyBolerp\obj\Debug\net6.0\ref\FindMyBolero.dll
