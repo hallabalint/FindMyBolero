@@ -4,11 +4,13 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
 using System.Threading;
+using FindMyBolero;
 
 class Program
 {
     static ManualResetEvent pingSuccessfulEvent = new ManualResetEvent(false);
     static List<Thread> threads = new List<Thread>();
+    static IPAddress boleroIP;
 
     static void Main(string[] args)
     {
@@ -36,6 +38,8 @@ class Program
                 thread.Interrupt();
             }
         }
+
+        HttpServer.startServer(boleroIP.ToString());
     }
 
     static void PingAndHandle(IPAddress ip)
@@ -48,7 +52,7 @@ class Program
 
             // Set the event to indicate a successful ping
             pingSuccessfulEvent.Set();
-
+            boleroIP = ip;
             // Open the address in the browser
             string url = "http://" + ip.ToString();
             Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
