@@ -26,14 +26,18 @@ static class Ping
      static void PingAndHandle(Antenna antenna)
     {
         System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
-        PingReply reply = ping.Send(antenna.Ip);
+        try
+        {
+            PingReply reply = ping.Send(antenna.Ip);
 
-        if (reply.Status == IPStatus.Success)
-        {
-            antenna.IsOnline = true;
-        } else
-        {
-            antenna.IsOnline = false;
-        }
+            if (reply.Status == IPStatus.Success)
+            {
+                antenna.IsOnline = true;
+            }
+            else
+            {
+                antenna.IsOnline = false;
+            }
+        } catch { antenna.IsOnline = false; }
     }
 }

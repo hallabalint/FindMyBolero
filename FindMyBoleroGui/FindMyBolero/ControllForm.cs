@@ -1,5 +1,6 @@
 
 
+using System.Diagnostics;
 using System.Drawing;
 using System.Resources;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -12,6 +13,10 @@ namespace FindMyBolero
         public ControllForm()
         {
             InitializeComponent();
+            quitProgram += delegate (object sender, EventArgs e) {
+                Caller.cf.Close();
+                Debug.WriteLine("Azért ezt megpróbálom!");
+            };
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -38,15 +43,16 @@ namespace FindMyBolero
             icon.Icon = (Icon)resources.GetObject("fmb");
             icon.DoubleClick += (e, o) => this.Show();
             icon.Visible = true;
+            icon.ContextMenuStrip = new ContextMenuStrip();
             icon.ContextMenuStrip.Items.Add("Quit",null,quitProgram);
-            quitProgram += delegate (object sender, EventArgs e) { this.Close(); };
+            
             Task.Run(() => Caller.PingAntennas());
             dgV1.DataSource = Caller.antennas;
         }
 
         private void ControllForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
+            //e.Cancel = true;
             this.Hide();
         }
 

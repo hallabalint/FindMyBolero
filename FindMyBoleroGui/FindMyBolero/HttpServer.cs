@@ -47,14 +47,14 @@ namespace FindMyBolero
                 // Write the response info
                 string disableSubmit = !runServer ? "disabled" : "";
                 string pageData;
-                if (Caller.Active == null)
+                if (Caller.Active == null || !Caller.Active.IsOnline)
                 {
                     pageData = "<!DoctypeHTML>" +
                     "<html>" +
                     "<head>" +
                     "</head>" +
                     "<body>" +
-                    "<h1>Nem található Bolero Antenna a hálózaton</h1>" +
+                    "<h1>Bolero network not available!</h1>" +
                     "</body>" +
                     "</html>";
                 }
