@@ -13,9 +13,9 @@ namespace FindMyBolero
         public ControllForm()
         {
             InitializeComponent();
-            quitProgram += delegate (object sender, EventArgs e) {
-                Caller.cf.Close();
-                Debug.WriteLine("Azért ezt megpróbálom!");
+            quitProgram += delegate (object sender, EventArgs e)
+            {
+                Caller.cf.Dispose();
             };
         }
 
@@ -44,15 +44,16 @@ namespace FindMyBolero
             icon.DoubleClick += (e, o) => this.Show();
             icon.Visible = true;
             icon.ContextMenuStrip = new ContextMenuStrip();
-            icon.ContextMenuStrip.Items.Add("Quit",null,quitProgram);
-            
+            icon.ContextMenuStrip.Items.Add("Quit", null, quitProgram);
+
             Task.Run(() => Caller.PingAntennas());
             dgV1.DataSource = Caller.antennas;
+            DataRefreh();
         }
 
         private void ControllForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //e.Cancel = true;
+            e.Cancel = true;
             this.Hide();
         }
 
@@ -62,9 +63,31 @@ namespace FindMyBolero
         }
         public void DataRefreh()
         {
+            
+            for (int i = 0; i < Caller.antennas.Count; i++)
+            {
+                var row = dgV1.Rows[i];
+                if (Caller.antennas[i].IsOnline)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Green;
+                    ((DataGridViewButtonCell)row.Cells[0]).ReadOnly = true ;
+                }
+                
+            }
             dgV1.Refresh();
-        }
-        
 
+        }
+
+        private static void openUrl(string url) => System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(url) { UseShellExecute = true });
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            openUrl("https://github.com/hallabalint/findmybolero");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            openUrl("https://github.com/hallabalint/findmybolero/issues");
+        }
     }
 }
