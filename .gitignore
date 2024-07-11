@@ -1,3 +1,6 @@
 .vs
 FindMyBolero/bin/*
 FindMyBolero/obj/*
+**/bin/Debug
+**/bin/Release
+obj
