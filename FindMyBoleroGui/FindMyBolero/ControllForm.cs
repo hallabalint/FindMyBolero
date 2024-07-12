@@ -45,10 +45,11 @@ namespace FindMyBolero
             icon.Visible = true;
             icon.ContextMenuStrip = new ContextMenuStrip();
             icon.ContextMenuStrip.Items.Add("Quit", null, quitProgram);
-
-            Task.Run(() => Caller.PingAntennas());
             dgV1.DataSource = Caller.antennas;
             DataRefreh();
+            Task.Run(() => Caller.PingAntennas());
+
+
         }
 
         private void ControllForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -70,7 +71,10 @@ namespace FindMyBolero
                 if (Caller.antennas[i].IsOnline)
                 {
                     row.DefaultCellStyle.BackColor = Color.Green;
-                    ((DataGridViewButtonCell)row.Cells[0]).ReadOnly = true;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = DefaultBackColor;
                 }
 
             }
@@ -88,6 +92,21 @@ namespace FindMyBolero
         private void label2_Click(object sender, EventArgs e)
         {
             openUrl("https://github.com/hallabalint/findmybolero/issues");
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Task.Run(() => Caller.PingAntennas());
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

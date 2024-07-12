@@ -5,9 +5,12 @@ using System.Net.NetworkInformation;
 using System.Threading;
 using System.Windows.Forms;
 using System.Resources;
+using System.Runtime.InteropServices;
 
 namespace FindMyBolero
 {
+
+   
     internal static class Caller
     {
         /// <summary>
@@ -21,33 +24,48 @@ namespace FindMyBolero
         [STAThread]
         static void Main()
         {
-            antennas = new List<Antenna>();
-            var icon = new NotifyIcon();
-            //set window icon
-
-            
-
-            try
+            bool createdNew = true;
+            using (Mutex mutex = new Mutex(true, "FindMyBolero", out createdNew))
             {
-                string[] keys = Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("FindMyBolero").OpenSubKey("Antennas").GetValueNames();
-                foreach (string key in keys)
+                if (createdNew)
                 {
-                    string ip = Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("FindMyBolero").OpenSubKey("Antennas").GetValue(key).ToString();
-                    antennas.Add(new Antenna(ip, key));
 
+                    antennas = new List<Antenna>();
+                    var icon = new NotifyIcon();
+                    
+
+                    try
+                    {
+                        string[] keys = Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("FindMyBolero").OpenSubKey("Antennas").GetValueNames();
+                        foreach (string key in keys)
+                        {
+                            string ip = Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("FindMyBolero").OpenSubKey("Antennas").GetValue(key).ToString();
+                            antennas.Add(new Antenna(ip, key));
+
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine("Parser error");
+                        Debug.WriteLine(e.Message);
+                    }
+                    // To customize application configuration such as set high DPI settings or default font,
+                    // see https://aka.ms/applicationconfiguration.
+                    ApplicationConfiguration.Initialize();
+                    cf = new ControllForm();
+                    Task.Factory.StartNew(() => HttpServer.startServer());
+                    Application.Run(cf);
+                }
+                else
+                {
+                    string message = "One instance is already running";
+                    string title = "FindMyBolero";
+                    MessageBox.Show(message, title);
+                    Process current = Process.GetCurrentProcess();
                 }
             }
-            catch (Exception e)
-            {
-                Debug.WriteLine("Parser error");
-                Debug.WriteLine(e.Message);
-            }
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            cf = new ControllForm();
-            Task.Factory.StartNew(() => HttpServer.startServer());
-            Application.Run(cf);
+        
+
 
         }
 
@@ -59,7 +77,7 @@ namespace FindMyBolero
             {
                 Active = antennas.Find(x => x.IsOnline);
             }
-            
+            cf.DataRefreh();
 
         }
 

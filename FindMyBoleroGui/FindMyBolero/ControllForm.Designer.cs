@@ -36,8 +36,12 @@
             bottomPanel = new Panel();
             label2 = new Label();
             label1 = new Label();
+            refreshToolStripMenuItem = new ToolStripMenuItem();
+            quitToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1 = new MenuStrip();
             ((System.ComponentModel.ISupportInitialize)dgV1).BeginInit();
             bottomPanel.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dgV1
@@ -45,10 +49,10 @@
             dgV1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgV1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgV1.Columns.AddRange(new DataGridViewColumn[] { SetActive });
-            dgV1.Location = new Point(12, 12);
+            dgV1.Location = new Point(12, 27);
             dgV1.Name = "dgV1";
             dgV1.RowTemplate.Height = 25;
-            dgV1.Size = new Size(776, 413);
+            dgV1.Size = new Size(776, 398);
             dgV1.TabIndex = 0;
             dgV1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -62,6 +66,7 @@
             // 
             // pingTimer
             // 
+            pingTimer.Enabled = true;
             pingTimer.Interval = 60000;
             pingTimer.Tick += timer1_Tick;
             // 
@@ -81,7 +86,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.Navy;
-            label2.Location = new Point(702, 3);
+            label2.Location = new Point(702, 1);
             label2.Name = "label2";
             label2.Size = new Size(84, 17);
             label2.TabIndex = 1;
@@ -94,10 +99,36 @@
             label1.AutoSize = true;
             label1.Location = new Point(10, 3);
             label1.Name = "label1";
-            label1.Size = new Size(206, 15);
+            label1.Size = new Size(208, 15);
             label1.TabIndex = 0;
-            label1.Text = "github.com/hallabalint/findmybolero";
+            label1.Text = "github.com/hallabalint/FindMyBolero";
             label1.Click += label1_Click;
+            // 
+            // refreshToolStripMenuItem
+            // 
+            refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            refreshToolStripMenuItem.Size = new Size(58, 20);
+            refreshToolStripMenuItem.Text = "Refresh";
+            refreshToolStripMenuItem.Click += refreshToolStripMenuItem_Click;
+            // 
+            // quitToolStripMenuItem
+            // 
+            quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            quitToolStripMenuItem.Size = new Size(42, 20);
+            quitToolStripMenuItem.Text = "Quit";
+            quitToolStripMenuItem.Click += quitToolStripMenuItem_Click;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            menuStrip1.Dock = DockStyle.None;
+            menuStrip1.Items.AddRange(new ToolStripItem[] { refreshToolStripMenuItem, quitToolStripMenuItem });
+            menuStrip1.Location = new Point(2, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(108, 24);
+            menuStrip1.TabIndex = 2;
+            menuStrip1.Text = "menuStrip1";
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // ControllForm
             // 
@@ -106,7 +137,9 @@
             ClientSize = new Size(800, 454);
             Controls.Add(bottomPanel);
             Controls.Add(dgV1);
+            Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
             Name = "ControllForm";
             Text = "FindMyBolero";
             FormClosing += ControllForm_FormClosing;
@@ -115,7 +148,10 @@
             ((System.ComponentModel.ISupportInitialize)dgV1).EndInit();
             bottomPanel.ResumeLayout(false);
             bottomPanel.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -130,5 +166,8 @@
         private Label label2;
         private Label label1;
         private DataGridViewButtonColumn SetActive;
+        private ToolStripMenuItem refreshToolStripMenuItem;
+        private ToolStripMenuItem quitToolStripMenuItem;
+        private MenuStrip menuStrip1;
     }
 }

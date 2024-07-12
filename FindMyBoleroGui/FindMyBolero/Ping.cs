@@ -8,9 +8,6 @@ using FindMyBolero;
 
 static class Ping
 {
-
-
-
     static public void makePings()
     {
         List<Task> tasks = new List<Task>();
