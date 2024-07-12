@@ -31,11 +31,11 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControllForm));
             dgV1 = new DataGridView();
+            SetActive = new DataGridViewButtonColumn();
             pingTimer = new System.Windows.Forms.Timer(components);
             bottomPanel = new Panel();
             label2 = new Label();
             label1 = new Label();
-            SetActive = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgV1).BeginInit();
             bottomPanel.SuspendLayout();
             SuspendLayout();
@@ -51,6 +51,14 @@
             dgV1.Size = new Size(776, 413);
             dgV1.TabIndex = 0;
             dgV1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // SetActive
+            // 
+            SetActive.HeaderText = "Set Active";
+            SetActive.Name = "SetActive";
+            SetActive.ReadOnly = true;
+            SetActive.Text = "Set Active";
+            SetActive.UseColumnTextForButtonValue = true;
             // 
             // pingTimer
             // 
@@ -69,11 +77,11 @@
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Left;
+            label2.Anchor = AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.Navy;
-            label2.Location = new Point(702, 1);
+            label2.Location = new Point(702, 3);
             label2.Name = "label2";
             label2.Size = new Size(84, 17);
             label2.TabIndex = 1;
@@ -90,14 +98,6 @@
             label1.TabIndex = 0;
             label1.Text = "github.com/hallabalint/findmybolero";
             label1.Click += label1_Click;
-            // 
-            // SetActive
-            // 
-            SetActive.HeaderText = "Set Active";
-            SetActive.Name = "SetActive";
-            SetActive.ReadOnly = true;
-            SetActive.Text = "Set Active";
-            SetActive.UseColumnTextForButtonValue = true;
             // 
             // ControllForm
             // 

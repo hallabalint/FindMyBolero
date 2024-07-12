@@ -40,7 +40,7 @@ namespace FindMyBolero
         {
             NotifyIcon icon = new NotifyIcon();
             var resources = new ResourceManager(typeof(ControllForm));
-            icon.Icon = (Icon)resources.GetObject("fmb");
+            icon.Icon = (Icon)resources.GetObject("$this.Icon");
             icon.DoubleClick += (e, o) => this.Show();
             icon.Visible = true;
             icon.ContextMenuStrip = new ContextMenuStrip();
@@ -63,16 +63,16 @@ namespace FindMyBolero
         }
         public void DataRefreh()
         {
-            
+
             for (int i = 0; i < Caller.antennas.Count; i++)
             {
                 var row = dgV1.Rows[i];
                 if (Caller.antennas[i].IsOnline)
                 {
                     row.DefaultCellStyle.BackColor = Color.Green;
-                    ((DataGridViewButtonCell)row.Cells[0]).ReadOnly = true ;
+                    ((DataGridViewButtonCell)row.Cells[0]).ReadOnly = true;
                 }
-                
+
             }
             dgV1.Refresh();
 
