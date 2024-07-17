@@ -32,11 +32,6 @@ namespace FindMyBolero
             }
         }
 
-
-        private void ControllForm_Leave(object sender, EventArgs e)
-        {
-        }
-
         private void ControllForm_Load(object sender, EventArgs e)
         {
             NotifyIcon icon = new NotifyIcon();

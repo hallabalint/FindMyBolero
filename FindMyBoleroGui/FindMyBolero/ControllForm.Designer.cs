@@ -153,7 +153,6 @@
             Text = "FindMyBolero";
             FormClosing += ControllForm_FormClosing;
             Load += ControllForm_Load;
-            Leave += ControllForm_Leave;
             ((System.ComponentModel.ISupportInitialize)dgV1).EndInit();
             bottomPanel.ResumeLayout(false);
             bottomPanel.PerformLayout();
