@@ -30,6 +30,7 @@ static class Ping
             if (reply.Status == IPStatus.Success)
             {
                 antenna.IsOnline = true;
+                Caller.cf.DataRefreh();
             }
             else
             {

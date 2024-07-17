@@ -39,6 +39,7 @@
             refreshToolStripMenuItem = new ToolStripMenuItem();
             quitToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
+            tsActiveAntenna = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgV1).BeginInit();
             bottomPanel.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -46,11 +47,14 @@
             // 
             // dgV1
             // 
+            dgV1.AllowUserToAddRows = false;
+            dgV1.AllowUserToDeleteRows = false;
             dgV1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgV1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgV1.Columns.AddRange(new DataGridViewColumn[] { SetActive });
             dgV1.Location = new Point(12, 27);
             dgV1.Name = "dgV1";
+            dgV1.ReadOnly = true;
             dgV1.RowTemplate.Height = 25;
             dgV1.Size = new Size(776, 398);
             dgV1.TabIndex = 0;
@@ -120,15 +124,20 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            menuStrip1.Dock = DockStyle.None;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { refreshToolStripMenuItem, quitToolStripMenuItem });
-            menuStrip1.Location = new Point(2, 0);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { refreshToolStripMenuItem, tsActiveAntenna, quitToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(108, 24);
+            menuStrip1.Size = new Size(800, 24);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
-            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
+            // 
+            // tsActiveAntenna
+            // 
+            tsActiveAntenna.Name = "tsActiveAntenna";
+            tsActiveAntenna.Size = new Size(128, 20);
+            tsActiveAntenna.Text = "Open active antenna";
+            tsActiveAntenna.ToolTipText = "Open active antenna";
+            tsActiveAntenna.Click += tsActiveAntenna_Click;
             // 
             // ControllForm
             // 
@@ -169,5 +178,6 @@
         private ToolStripMenuItem refreshToolStripMenuItem;
         private ToolStripMenuItem quitToolStripMenuItem;
         private MenuStrip menuStrip1;
+        private ToolStripMenuItem tsActiveAntenna;
     }
 }

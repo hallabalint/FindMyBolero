@@ -1,5 +1,6 @@
 
 
+using Microsoft.Win32;
 using System.Diagnostics;
 using System.Drawing;
 using System.Resources;
@@ -104,9 +105,9 @@ namespace FindMyBolero
             this.Dispose();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void tsActiveAntenna_Click(object sender, EventArgs e)
         {
-
-        }
+            openUrl("http://" + Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("FindMyBolero").GetValue("bind").ToString() + "/");
+         }
     }
 }
