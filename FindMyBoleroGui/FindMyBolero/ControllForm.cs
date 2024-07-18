@@ -45,7 +45,12 @@ namespace FindMyBolero
             DataRefreh();
             Task.Run(() => Caller.PingAntennas());
 
-
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            Visible = false;
+            ShowInTaskbar = false;
+            base.OnLoad(e);
         }
 
         private void ControllForm_FormClosing(object sender, FormClosingEventArgs e)
