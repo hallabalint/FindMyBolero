@@ -31,7 +31,7 @@ namespace FindMyBolero
                 dgV1.Refresh();
             }
         }
-
+        
         private void ControllForm_Load(object sender, EventArgs e)
         {
             NotifyIcon icon = new NotifyIcon();
@@ -62,10 +62,18 @@ namespace FindMyBolero
         private void timer1_Tick(object sender, EventArgs e)
         {
             Task.Run(() => Caller.PingAntennas());
+            Task.Run(() => Caller.updateCachedAntennas());
         }
         public void DataRefreh()
         {
+            // Check if we are on a background thread
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(DataRefreh));
+                return;
+            }
 
+            dgV1.DataSource = Caller.antennas;
             for (int i = 0; i < Caller.antennas.Count; i++)
             {
                 var row = dgV1.Rows[i];
@@ -77,10 +85,9 @@ namespace FindMyBolero
                 {
                     row.DefaultCellStyle.BackColor = DefaultBackColor;
                 }
-
             }
-            dgV1.Refresh();
 
+            dgV1.Refresh();
         }
 
         private static void openUrl(string url) => System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(url) { UseShellExecute = true });

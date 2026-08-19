@@ -13,7 +13,8 @@ namespace FindMyBolero
     {
 
         public static HttpListener listener;
-        public static string url = "http://"+ Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("FindMyBolero").GetValue("bind").ToString()+"/";
+       
+        public static string url = "http://" + Registry.CurrentUser.CreateSubKey(@"SOFTWARE\FindMyBolero").GetValue("Bind")?.ToString()+"/";
         public static int requestCount = 0;
         public static int pageViews = 0;
 
